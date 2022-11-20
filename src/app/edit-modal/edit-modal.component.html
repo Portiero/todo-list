@@ -1,0 +1,10 @@
+<div class="container">
+  <h3>Edit task</h3>
+  <input type="text" #editTaskInput />
+  <div class="button-container">
+    <button class="cancel-btn">Cancel</button>
+    <button (click)="passNewValue(editTaskInput.value)" class="confirm-btn">
+      Confirm
+    </button>
+  </div>
+</div>
