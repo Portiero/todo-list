@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit, OnChanges {
   @ViewChild('task', { static: true }) taskInput!: ElementRef;
   modalHidden: boolean = false;
   changedValue!: string;
+  disableAdd: boolean = false;
 
   constructor(private editService: EditService) {
     this.editService.toggleModalVisibility.subscribe((visibility: boolean) => {
@@ -33,6 +34,9 @@ export class TodoListComponent implements OnInit, OnChanges {
   ngOnChanges() {}
 
   onAdd(task: string) {
+    if (this.taskInput.nativeElement.value === '') {
+      return;
+    }
     this.editService.addTask(task);
     this.taskInput.nativeElement.value = '';
   }

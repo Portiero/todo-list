@@ -1,15 +1,17 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, OnInit } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EditService {
+export class EditService implements OnInit {
   todoList: { id: number; task: string }[] = [];
   finishedTasks: { id: number; task: string }[] = [];
   taskToEdit!: { id: number; task: string };
   toggleModalVisibility = new EventEmitter<boolean>();
 
   constructor() {}
+
+  ngOnInit(): void {}
 
   addTask(task: string) {
     const todo = {
